@@ -283,9 +283,33 @@ struct SplitsView: View {
                 .font(.headline)
 
             if splits.isEmpty {
-                Text("No split data available")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                VStack(spacing: 12) {
+                    Image(systemName: "chart.bar.xaxis")
+                        .font(.system(size: 28, weight: .regular))
+                        .foregroundStyle(.secondary)
+                        .padding(.bottom, 2)
+
+                    Text("No split data yet")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(.primary)
+
+                    Text("Start a GPS workout to see kilometer-by-kilometer breakdowns here.")
+                        .font(.footnote)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 140)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color(.tertiarySystemBackground))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color(.quaternaryLabel), lineWidth: 0.5)
+                )
+                .padding(.top, 4)
             } else {
                 VStack(spacing: 0) {
 
